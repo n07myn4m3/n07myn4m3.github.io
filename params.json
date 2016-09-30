@@ -4,3 +4,10 @@
   "body": "test\r\n",
   "note": "Don't delete this file! It's used internally to help with page regeneration."
 }
+
+{
+  "name": "nrf24l01",
+  "tagline": "",
+  "body": "Prueba de modulo\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
