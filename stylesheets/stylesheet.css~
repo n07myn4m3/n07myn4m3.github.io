@@ -166,7 +166,6 @@ pre {
 table {
   width: 100%;
   margin: 0 0 20px 0;
-  border: 1px solid rgba(181, 232, 83, 0.1);
 }
 
 th {
