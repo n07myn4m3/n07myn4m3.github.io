@@ -26,8 +26,8 @@
 
     <div class="container">
       <section id="main_content">
-        <p>test</p>
-        <a href="nrf24l01.html">products</a>
+        <a href="nrf24l01.html">nrf24l01</a>
+        <a href="motor.html">motor</a>
       </section>
     </div>
 
