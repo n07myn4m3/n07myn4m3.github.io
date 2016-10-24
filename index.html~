@@ -32,6 +32,34 @@
       </div>
     </header>
 
+	<!--/////////////////////////////////////////////////////////-->
+	<div class="container">
+		<article class="markdown-body">
+
+		 <h1>Presentación</h1>
+
+         <p>Bienvenidos al espacio diseñado por nosotros, Karen Atsumi, Julian Navarrete y Nicolas Ospina </p>
+
+			<h2>Contactos:<h2>
+
+		 <p>Karen Atsumi Osako<br>
+			Código: 25451569<br>
+			Correo institucional: kaosako@unal.edu.co</p>
+
+		 <p>Julian Camilo Navarrete Rubio<br>
+			Código: 25451582<br>
+			Correo institucional: jcnavarreter@unal.edu.co</p>
+
+		 <p>Nicolas Ospina Mendivelso<br>
+			Código: 25451691<br>
+			Correo institucional: nospinam@unal.edu.co</p>
+
+         <p>Esta NO es una web oficial de la universidad nacional de Colombia, somos un grupo de estudiantes que crearon la página para exponer el desarrollo de un proyecto de la asignatura de electrónica digital I (2016498).</p>
+
+		</article>
+	</div>
+	<!--/////////////////////////////////////////////////////////-->
+
     <div class="container">
       <section id="main_content">
         <a href="nrf24l01.html">nrf24l01</a><br>
