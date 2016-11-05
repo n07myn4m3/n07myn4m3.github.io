@@ -19,6 +19,11 @@
     
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
+	<script type="text/x-mathjax-config">
+	  MathJax.Hub.Config({ TeX: { equationNumbers: {autoNumber: "all"} } });
+	</script>
+
+
     <title>funcionamiento-dron</title>
   </head>
 
@@ -51,6 +56,43 @@
 
 		<img src="../images/dron/yaw-pitch-roll.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
 
+      <p>Si se considera a los vectores \(\vec{x_b}\) como el marco de referencia o marco del dron y al vector \(\vec{x}\) como el marco inercial o terrestre, se puede emplear una matriz de rotación \(R\) que me permita realizar la conversión entre los distintos marcos. [\ref{ref1}]</p> 
+
+		\begin{equation}\nonumber
+         \vec{x}=
+			\begin{bmatrix}
+				C\psi S\theta & C\psi S\theta S\phi - S\psi C\phi & C\psi S\theta C\phi + S\psi S\phi \\
+				S\psi C\theta & S\psi S\theta S\phi + C\psi C\phi & S\psi S\theta C\phi - C\psi S\phi \\
+				-S\theta      & C\theta S\phi                     & C\theta C\phi \\ 
+			\end{bmatrix}
+         *\vec{x_b}
+		\end{equation}
+
+		\begin{equation}\nonumber
+         \vec{x}=R*\vec{x_b}
+		\end{equation}
+		
+		<p>La anterior matriz permite encontrar cual es la coordenada de un punto fijo en el marco rotado con referencia al marco inercial terrestre.</p>
+
+		<p>Debido a que R es una matriz ortogonal su inversa es igual a su transpuesta y por ende la matriz que permite encontrar la coordenada de un punto en el marco inercial con referencia a un punto en el marco del cuerpo queda expresada de la siguiente manera:<p>
+
+		\begin{equation}\nonumber
+         \vec{x_b}=
+			\begin{bmatrix}
+				C\psi S\theta                     & S\psi C\theta                     & -S\theta \\
+				C\psi S\theta S\phi - S\psi C\phi & S\psi S\theta S\phi + C\psi C\phi & C\theta S\phi \\
+				C\psi S\theta C\phi + S\psi S\phi & S\psi S\theta C\phi - C\psi S\phi & C\theta C\phi \\ 
+			\end{bmatrix}
+         *\vec{x}
+		\end{equation}
+
+		\begin{equation}\nonumber
+         \vec{x_b}=R^T*\vec{x}
+		\end{equation}
+
+
+
+
 
 		Descripcion de los elementos a utilizar<br>
         <a href="nrf24l01.html">nrf24l01</a><br>
@@ -58,8 +100,14 @@
         <a href="everloop.html">everloop</a><br>
         <a href="lsm9ds1.html">iNEMO</a><br>
         <a href="matrix-creator.html">matrix creator</a><br>
+
+      <h2>Bibliografía</h2>
+      $$\label{ref1}$$
+		<p>MIT Kinematics of moving frames (<time datetime='2016-11'>Noviembre 2016</time>) recuperado de <a href="https://ocw.mit.edu/courses/mechanical-engineering/2-017j-design-of-electromechanical-robotic-systems-fall-2009/course-text/MIT2_017JF09_ch09.pdf">link</a></p> 
+
 		</article>
 	</div>
-  
+
+
 </body>
 </html>
