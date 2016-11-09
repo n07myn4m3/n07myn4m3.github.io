@@ -126,7 +126,7 @@
 
 		<img src="../images/dron/efecto-torque.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[3]
 
-
+        <h2>Ecuaciones del sistema</h2>
 
 		<p>Descripcion de los elementos a utilizar</p><br>
         <a href="nrf24l01.html">nrf24l01</a><br>
@@ -143,7 +143,7 @@
 
 				<li id='bib02'>Luukkonen. T, (2011). Modelling and control of quadcopter (1ra Ed.). recuperado de <a href="http://sal.aalto.fi/publications/pdf-files/eluu11_public.pdf">link</a> recuperado el 5 de Noviembre de 2016.</li> <!--[2]-->
 
-				<li id='bib03'>Schmidt. M., (2011).Simulation and control of a quadrotor unmanned aerial vehicle. Disponible en <a href="http://uknowledge.uky.edu/gradschool_theses/93">link</a> recuperado el 6 de Noviembre de 2016.</li>
+				<li id='bib03'>Schmidt. M., (2011).Simulation and control of a quadrotor unmanned aerial vehicle. Disponible en <a href="http://uknowledge.uky.edu/gradschool_theses/93">link</a> recuperado el 6 de Noviembre de 2016.</li> <!--[3]-->
 
 				<li id='bib04'>Horace, Ode; quoted from Horace: The Complete Odes and Epodes, (trans.) (<time datetime='2004'>2004</time>) West D.; reprinted in Fear, T (ed.) <cite>Reputations (AA100 Book 1)</cite>, Milton Keynes, The Open University, p. 28.
 				Fear, T. (ed) Reputations (AA100 Book 1), Milton Keynes, The Open University, p.13.</li>

@@ -47,6 +47,106 @@
 			<h1>Descripción de los módulos</h1>
          <p>Los modulos con los que cuenta la matrix creator y que presentan comunicacion I2C son los siguientes:</p>
 
+			<ul>
+				<li>LSM9DS1_M 0x1C  Magnetometer</li>
+				<li>VEML6070  0x38  UV Light LSB</li>
+				<li>VEML6070  0x39  UV Light MSB</li>
+				<li>HTS221    0x5F Humidity, Temperature</li>
+				<li>MPL3115A2 0x60  Altimeter</li>
+				<li>LSM9DS1_AG 0x6A  Accelerometer, Gyroscope</li>
+			</ul>
+			<h1>Descripcion de las funciones disponibles</h1>
+
+		<!--/////////////////////////////////////////////////////////
+           /////////////////////////////////////////////////////////-->
+		<h2>I2CreadByte</h2>
+<!--codigo-->
+		  <pre class='brush: cpp'>
+uint8_t I2CreadByte(uint8_t address, uint8_t subaddress);
+		  </pre>
+<!--codigo-->
+		<!--/////////////////////////////////////////////////////////
+           /////////////////////////////////////////////////////////-->
+		<h2>I2CreadBytes</h2>
+
+         <p>La funcion entrega como resultado un arreglo de enteros cuyo numero dependera de la cantidad de lecturas indicadas por medio del entero count, se debe indicar la direccion del modulo y la dirección interna del registro que se desea leer</p>
+
+<!--codigo-->
+		  <pre class='brush: cpp'>
+void I2CreadBytes(uint8_t address, uint8_t subaddress, int *dest, uint8_t count);
+		  </pre>
+<!--codigo-->
+
+         <p>A continuación se presenta el código completo</p>
+
+<!--codigo-->
+		  <pre class='brush: cpp'>
+void I2CreadBytes(uint8_t address, uint8_t subaddress, int *dest, uint8_t count)
+{
+	i2c_putrwaddr (I2C_WRITE, address);
+	i2c_putdata(subaddress);
+	i2c_init(); 
+	nsleep(20);
+	i2c0->ucr = 0x00;
+	  //Pausa para que el esclavo procese la orden
+	while((i2c0->ucr & I2C_BUSY));
+	msleep(1);                
+	  //Lectura de la informacion otorgada por el esclavo
+	i2c_putrwaddr(I2C_READ, address);
+	i2c_init();  
+	//-------------------------------------
+  uint8_t i;
+	for (i=0; i<count;)
+	{
+		nsleep(20);
+	 if (i==count-1) i2c0->ucr = 0x00;
+
+		while ( (i2c0->ucr & I2C_BUSY) && (!(i2c0->ucr & I2C_ERROR)));
+	    dest[i++] = i2c0-> wxrx;
+	}
+	//-------------------------------------
+}
+		  </pre>
+<!--codigo-->
+
+         <p>Este código puede ser empleado para verificar el correcto funcionamiento de la fúncion, en la salida del módulo gpio se veran expresadas las mediciones tomadas por el modulo i2c</p>
+
+<!--codigo-->
+		  <pre class='brush: cpp'>
+static int temp[6]; 
+
+I2CreadBytes(0x30, 0x35, temp, 6);
+
+gpio0->oe  = 0x000000ff;
+
+gpio0->out = 0xAA;
+
+
+gpio0->out = 0x00;
+	gpio0->out = temp[0];
+gpio0->out = 0x01;
+	gpio0->out = temp[1];
+gpio0->out = 0x02;
+	gpio0->out = temp[2];
+gpio0->out = 0x03;
+	gpio0->out = temp[3];
+gpio0->out = 0x04;
+	gpio0->out = temp[4];
+gpio0->out = 0x05;
+	gpio0->out = temp[5];
+		  </pre>
+<!--codigo-->
+
+		<!--/////////////////////////////////////////////////////////
+           /////////////////////////////////////////////////////////-->
+		<h2>I2CwriteByte</h2>
+<!--codigo-->
+		  <pre class='brush: cpp'>
+void I2CwriteByte(uint8_t address, uint8_t subaddress, uint8_t data);
+		  </pre>
+<!--codigo-->
+
+		<img src="../images/modulos-i2c/i2c.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
 		</article>
 	</div>
   
