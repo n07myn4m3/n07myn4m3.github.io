@@ -47,7 +47,7 @@
     </div>
 	<!--/////////////////////////////////////////////////////////-->
 	<div class="container">
-		<article class="markdown-body">
+    <!--Inicio articulo-->
         <h1>Descripcion de un Dron</h1>
 
 		<p>Un dron entra dentro de la categoría de los helicópteros debido a que se trata de una aeronave que es propulsada y sustentada a traves de uno o mas rotores los cuales se encuentran conformados por dos o mas palas</p>
@@ -128,6 +128,32 @@
 
         <h2>Ecuaciones del sistema</h2>
 
+<p>La fuerza requerida para acelerar la masa mas la fuerza centrifuga es igual a la fuerza de gravedad mas la fuerza de empuje producto de los motores [2].</p>
+
+		\begin{equation}\label{movimiento-dron}
+          m\dot{V_B}+\nu\times(mV_B)=R^TG+T_B
+		\end{equation}
+
+<p>La gran mayoria de las fuerzas se encuentran dentro de los ejes del aeromodelo, sin embargo el vector de gravedad siempre se encuentra fijo con respecto al eje terrestre por ende es necesaria la matriz de rotación [3]</p>
+
+<p>Por otra parte en el marco inercial la fuerza centrifuga es nula y por ende puede obtenerse [2]:</p>
+
+		\begin{equation}
+			\begin{aligned}\label{prueba}
+			mR\dot{V_B}=RR^TG+RT_B \\
+			m\dot{V}+=G+RT_B
+			\end{aligned}
+		\end{equation}
+
+        <!--+++++++++++++++++++++++++++++++++++++++++++++++
+            +++++++++++++++++++++++++++++++++++++++++++++++-->
+        <h1>Controlador</h1>
+        <!--+++++++++++++++++++++++++++++++++++++++++++++++
+            +++++++++++++++++++++++++++++++++++++++++++++++-->
+
+		<img src="../images/dron/Controlador.png" alt="Controlador" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+		<img src="../images/dron/Entradas-y-salidas.png" alt="Entradas y salidas del controlador" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+
 		<p>Descripcion de los elementos a utilizar</p><br>
         <a href="nrf24l01.html">nrf24l01</a><br>
         <a href="motor.html">motor</a><br>
@@ -148,8 +174,7 @@
 				<li id='bib04'>Horace, Ode; quoted from Horace: The Complete Odes and Epodes, (trans.) (<time datetime='2004'>2004</time>) West D.; reprinted in Fear, T (ed.) <cite>Reputations (AA100 Book 1)</cite>, Milton Keynes, The Open University, p. 28.
 				Fear, T. (ed) Reputations (AA100 Book 1), Milton Keynes, The Open University, p.13.</li>
 			</ol>
-
-		</article>
+    <!--fin articulo-->
 	</div>
 
 
