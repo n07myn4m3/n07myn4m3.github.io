@@ -42,16 +42,33 @@
     </div>
 	<!--/////////////////////////////////////////////////////////-->
 	<div class="container">
-		<article class="markdown-body">
-		<p>Diagrama de interaccion general con el modulo</p> 
+    <!--Inicio articulo-->
+	  <h1>Diagrama de interaccion general con el modulo</h1> 
 		<img src="../images/lsm9ds1/Esquema1.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-      <p>Para iniciar el giroscopio es necesario modificar la informacion de cuatro registros</p> 
+      <h1>Giroscopio</h1>      
+      <p>Para iniciar el giroscopio es necesario modificar la informacion de cuatro registros, 3 registros asociados netamente al giroscopio mas un registro de control</p> 
+
+      <h2>CTRL_REG1_G</h2> 
+      <p>Este registro permite configurar la tasa de salida de datos (ODR) del giroscopio, el valor a full escala de la lectura del ADC expresado en términos de DPS (Degrees per second - grados por segundo) y el ancho de banda en Hz del mismo, cabe aclarar que este ultimo valor es dependiente del valor de ODR.</p>
+      <p>No se profundizará mucho con respecto a la seleccion del ODR y de la frecuencia de corte del segundo filtro pasabajas debido a que estos parámetros no se encuentran muy detallados y se encuentran íntimamente ligados a la aplicación lo cual requiere un ajuste por alguna manera de decirlo manual</p>
+      <p> Para expresar una medición obtenida del ADC en términos de DPS se presenta la siguiente ecuación: </p> 
+
+  \begin{equation}\nonumber
+   DPS_{medicion}=\frac{DPS_{valor \ full \ escala}}{ADC_{resolucion}}*ADC_{medicion}
+  \end{equation}
+
+      <h2>CTRL_REG2_G</h2> 
+      <p>En este registro se configura la forma en que se presentaran los datos leídos si en la FIFO o como un registro de datos y se controla el generador de interrupciones, durante las pruebas su valor se dejo en el valor por defecto, es decir (0x00).</p>
+
+	  <h2>CTRL_REG3_G</h2>
+      <p>En este registro se escogen 3 cosas, si el modulo funcionará en modo de bajo consumo, si se desea habilitar el filtro pasa altas y la frecuencia de corte de dicho filtro, en las pruebas se dejo su valor por defecto (0x00).</p>
+
    <!--http://electronics.stackexchange.com/questions/84804/output-data-rate-for-this-gyroscope-is-way-lower-than-the-clock-rate-->
    <!--http://aeroquad.com/showthread.php?6434-Sensor-s-output-data-rate-and-bandwidth-->
 	<!--http://aeroquad.com/showthread.php?6434-Sensor-s-output-data-rate-and-bandwidth-->
    <!--https://forum.pololu.com/t/understanding-data-rate-and-bandwidth/5494-->
    <!--https://www.maximintegrated.com/en/app-notes/index.mvp/id/928-->
-		</article>
+    <!--fin articulo-->
 	</div>
   
 </body>
