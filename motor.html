@@ -37,39 +37,127 @@
 	<!--/////////////////////////////////////////////////////////-->
   <div class="container">
     <section id="main_content">
-      <a href="index.html">volver</a>
+      <a href="index.html">inicio</a>
+      <a href="funcionamiento-dron.html">volver</a>
     </section>
   </div>
 	<!--/////////////////////////////////////////////////////////-->
 	<div class="container">
-
-			<h1>Motor Brushless A2212/15\(T\)-930\(KV\)</h1>
+        <h1>Motor Brushless A2212/15\(T\)-930\(KV\)</h1>
          <p>El motor empleado sera un motor sin escobillas outrunner genérico <a href="http://avelectronics.co/productos-2/motor-brushless-a221215t-930kv/">link</a>.</p>
          <img src="images/motor/motor.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle">
 
 			<h2>Características</h2>
 			<ul>
 				<li>Celdas: 3S</li>
-				<li>Peso de arrastre Max. 830 \(g\)</li>
+				<li>Peso de arrastre Max: 830 \(g\)</li>
 				<li>kv: 920 \(kv\)</li>
 				<li>Diámetro eje: 3 \(mm\)</li>
-				<li>Diámetro : 27.60 \(mm\) (1.09 \(in\) )</li>
+				<li>Diámetro: 27.60 \(mm\) (1.09 \(in\) )</li>
 				<li>Largo: 26.70 \(mm\) (1.05 \(in\) )</li>
 				<li>Maximum Amps: 12</li>
 				<li>Rm: 0.388</li>
 				<li>Io: 0.55</li>
 			</ul>
 
-			<h2>Controlador del motor (ESC)</h2>
-      <p>Para controlar los motores, se utilizó el <a href="http://www.emaxmodel.com/esc/simonk-series/emax-multirotor-4in1-esc-4-25a.html">"EMAX Multirotor 4IN1 ESC(4*25A)"</a>.</p>
-      <img src="images/motor/controllador.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle">
-      <h3>Calibración</h3>
-      <p>Cuando los motores no están calibrados, o en caso de que se deseé cambiar la calibración de los motores, una opción es calibrarlos utilizando el controlador. El controlador.</p>
-      <p>La calibración con el controlador, .</p>
-      <img src="images/motor/pulso_1ms.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle">
-      <img src="images/motor/pulso_2ms.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle">
+        <h1>Controlador del motor (ESC)</h1>
+          <p>Para controlar los motores, se utilizó el <a href="http://www.emaxmodel.com/esc/simonk-series/emax-multirotor-4in1-esc-4-25a.html">"EMAX Multirotor 4IN1 ESC(4*25A)"</a>.</p>
+          <img src="images/motor/controllador.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle"></br>
+          <h2>Características</h2>
+          <ul>
+              <li>Maxima corriente contínua: 25\(A\)*4</li>
+              <li>Corriente "Burst": 30\(A\)*4</li>
+              <li>Tipo BEC: Switch mode</li>
+              <li>Salida BEC: 5\(V\)/3\(A\)</li>
+              <li>Bateria Li-xx (celda): 2-4</li>
+              <li>Dimensión: 67.5*64.4*17 \(mm\)</li>
+              <li>Peso: 130 \(g\)</li>
+              <li>Programable: Sí</li>
+          </ul>
+          <h2>Calibración de motores, con arduino</h2>
+          <p>Cuando los motores no están calibrados, o en caso de que se deseé cambiar la calibración de los motores, una opción es calibrarlos utilizando el controlador. El controlador.</p>
+          <p>Para calibrar el motor, se utilizan dos señales, una que dura 1ms en alto, y la otra que dura 2 ms en alto. En la puerta de comunicacion utilizada por el arduino ¨CM¨ hay que mandar el valor 2000, para indicar que se desea configurar. Luego se enciende el ESC.</p>
+          <p>En la tabla 1 se muestra el menú principal, configuraciones y como se escucharán (identificador). Para seleccionar alguna de las configuraciones, es solo enviar a la puerta de comunicación el valor 1000 (corresponde a 1ms de la figura abajo) após escuhar los ¨beeps¨ correspondiente</p>
+          <img src="images/motor/pulso_1ms.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle"></br>
 
-  </div>
-
-</body>
+          <p>En las tablas seguientes (2,3,4,5,6,7 y 8), muestan las opciones de los submenús, donde aparecen las opciónes de las configuraciones del menú principal. Para seleccionar alguna de las opciones, es solo enviar a la puerta de comunicación el valor 2000 (corresponde a 2ms de la figura abajo) após escuhar los ¨beeps¨ correspondiente</p>
+          <img src="images/motor/pulso_2ms.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle"></br>
+          <p>La configuración que utilizamos para este proyecto, es utilizar todos las opciones de configuración en su valor por defecto (defaut) menos la opción 4 "Curve Mode" la cual, elegimos la opción 2, para suavisar los cambios de potencia.</p>
+          <table border="1">
+              <caption>Tabla 1: Menú principal (1ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Función</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>Brake Type</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>Timing Mode</td></tr>
+              <tr><td>3</td><td>3 beeps cortos</td><td>Start Force</td></tr>
+              <tr><td>4</td><td>4 beeps cortos</td><td>Curve Mode</td></tr>
+              <tr><td>5</td><td>1 beep largo</td><td>Control frecuence</td></tr>
+              <tr><td>6</td><td>1 beep largo + 1 beep corto</td><td>Low voltage</td></tr>
+              <tr><td>7</td><td>1 beep largo + 2 beeps cortos</td><td>Cutoff mode</td></tr></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 2: Brake Type  (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>OFF (defaut)</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>Low</td></tr>
+              <tr><td>3</td><td>3 beeps cortos</td><td>Mid-Low</td></tr>
+              <tr><td>4</td><td>4 beeps cortos</td><td>Middle</td></tr>
+              <tr><td>5</td><td>1 beep largo</td><td>Mid-High</td></tr>
+              <tr><td>6</td><td>1 beep largo + 1 beep corto</td><td>High</td></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 3: Timing Mode (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>0°</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>8°</td></tr>
+              <tr><td>3</td><td>3 beeps cortos</td><td>15° (defaut)</td></tr>
+              <tr><td>4</td><td>4 beeps cortos</td><td>23°</td></tr>
+              <tr><td>5</td><td>1 beep largo</td><td>30°</td></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 4: Start Force (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>0.03</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>0.05</td></tr>
+              <tr><td>3</td><td>3 beeps cortos</td><td>0.06</td></tr>
+              <tr><td>4</td><td>4 beeps cortos</td><td>0.09</td></tr>
+              <tr><td>5</td><td>1 beep largo</td><td>0.13</td></tr>
+              <tr><td>6</td><td>1 beep largo + 1 beep corto</td><td>0.19</td></tr>
+              <tr><td>7</td><td>1 beep largo + 2 beeps cortos</td><td>0.25</td></tr>
+              <tr><td>8</td><td>1 beep largo + 3 beeps cortos</td><td>0.38</td></tr>
+              <tr><td>9</td><td>1 beep largo + 4 beeps cortos</td><td>0.50</td></tr>
+              <tr><td>10</td><td>2 beeps largos</td><td>0.75 (defaut)</td></tr>
+              <tr><td>11</td><td>2 beeps largos + 1 beep corto</td><td>1.00</td></tr>
+              <tr><td>12</td><td>2 beeps largos + 2 beeps cortos</td><td>1.25</td></tr>
+              <tr><td>13</td><td>2 beeps largos + 3 beeps cortos</td><td>1.50</td></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 5: Curve (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>OFF (defaut)</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>Low</td></tr>
+              <tr><td>3</td><td>3 beeps cortos</td><td>Middle</td></tr>
+              <tr><td>4</td><td>4 beeps cortos</td><td>High</td></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 6: Control frecuence (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>8KHz (defaut)</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>22KHz</td></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 7: Low voltage (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>2.8V/cell</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>3.0V/cell (defaut)</td></tr>
+              <tr><td>3</td><td>3 beeps cortos</td><td>3.2V/cell</td></tr>
+              <tr><td>4</td><td>4 beeps cortos</td><td>Off</td></tr>
+          </table>
+          <table border="1">
+              <caption>Tabla 8: Cutoff mode (2ms).</caption>
+              <tr><th>#</th><th>Identificador</th><th>Opción</th></tr>
+              <tr><td>1</td><td>1 beep corto</td><td>Soft-Cut (defaut)</td></tr>
+              <tr><td>2</td><td>2 beeps cortos</td><td>Cut-Off</td></tr>
+          </table>
+      </div>
+  </body>
 </html>
