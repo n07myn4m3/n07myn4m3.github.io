@@ -1,12 +1,12 @@
 <!doctype html>
 <!--
-███╗   ██╗ ██████╗ ███████╗███╗   ███╗██╗   ██╗███╗   ██╗██╗  ██╗███╗   ███╗██████╗     
-████╗  ██║██╔═████╗╚════██║████╗ ████║╚██╗ ██╔╝████╗  ██║██║  ██║████╗ ████║╚════██╗    
-██╔██╗ ██║██║██╔██║    ██╔╝██╔████╔██║ ╚████╔╝ ██╔██╗ ██║███████║██╔████╔██║ █████╔╝    
-██║╚██╗██║████╔╝██║   ██╔╝ ██║╚██╔╝██║  ╚██╔╝  ██║╚██╗██║╚════██║██║╚██╔╝██║ ╚═══██╗    
-██║ ╚████║╚██████╔╝   ██║  ██║ ╚═╝ ██║   ██║   ██║ ╚████║     ██║██║ ╚═╝ ██║██████╔╝    
-╚═╝  ╚═══╝ ╚═════╝    ╚═╝  ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═══╝     ╚═╝╚═╝     ╚═╝╚═════╝   
--->   
+███╗   ██╗ ██████╗ ███████╗███╗   ███╗██╗   ██╗███╗   ██╗██╗  ██╗███╗   ███╗██████╗
+████╗  ██║██╔═████╗╚════██║████╗ ████║╚██╗ ██╔╝████╗  ██║██║  ██║████╗ ████║╚════██╗
+██╔██╗ ██║██║██╔██║    ██╔╝██╔████╔██║ ╚████╔╝ ██╔██╗ ██║███████║██╔████╔██║ █████╔╝
+██║╚██╗██║████╔╝██║   ██╔╝ ██║╚██╔╝██║  ╚██╔╝  ██║╚██╗██║╚════██║██║╚██╔╝██║ ╚═══██╗
+██║ ╚████║╚██████╔╝   ██║  ██║ ╚═╝ ██║   ██║   ██║ ╚████║     ██║██║ ╚═╝ ██║██████╔╝
+╚═╝  ╚═══╝ ╚═════╝    ╚═╝  ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═══╝     ╚═╝╚═╝     ╚═╝╚═════╝
+-->
 <html>
 
   <head>
@@ -16,7 +16,7 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    
+
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
 	<script type="text/x-mathjax-config">
@@ -28,7 +28,7 @@
   </head>
 
   <body>
-   <!--/////////////////////////////////////////////////////////--> 
+   <!--/////////////////////////////////////////////////////////-->
 	<header>
       <div class="container">
         <h1>Funcionamiento de un dron</h1>
@@ -54,7 +54,7 @@
 
 		<p>Mas específicamente un dron posee cuatro rotores capaces de producir una fuerza de empuje a una distancia determinada con relación al centro de gravedad del dron, donde a partir de la variación de la velocidad de los rotores es posible cambiar la magnitud de dichas fuerzas de sustentación, lo que le da a este la oportunidad de mantener un estado estacionario como si flotase en el aire o de mantener una determinada dirección de vuelo</p>
 
-		<img src="../images/dron/yaw-pitch-roll.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+		<img src="images/dron/yaw-pitch-roll.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
 
         <!--+++++++++++++++++++++++++++++++++++++++++++++++
             +++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -64,14 +64,14 @@
 
         <h2>Matrices de conversion</h2>
 
-      <p>Si se considera a los vectores \(\vec{x_b}\) como el marco de referencia o marco del dron y al vector \(\vec{x}\) como el marco inercial o terrestre, se puede emplear una matriz de rotación \(R\) que me permita realizar la conversión entre los distintos marcos [1].</p> 
+      <p>Si se considera a los vectores \(\vec{x_b}\) como el marco de referencia o marco del dron y al vector \(\vec{x}\) como el marco inercial o terrestre, se puede emplear una matriz de rotación \(R\) que me permita realizar la conversión entre los distintos marcos [1].</p>
 
 		\begin{equation}\nonumber
          \vec{x}=
 			\begin{bmatrix}
 				C\psi S\theta & C\psi S\theta S\phi - S\psi C\phi & C\psi S\theta C\phi + S\psi S\phi \\
 				S\psi C\theta & S\psi S\theta S\phi + C\psi C\phi & S\psi S\theta C\phi - C\psi S\phi \\
-				-S\theta      & C\theta S\phi                     & C\theta C\phi \\ 
+				-S\theta      & C\theta S\phi                     & C\theta C\phi \\
 			\end{bmatrix}
          *\vec{x_b}
 		\end{equation}
@@ -79,7 +79,7 @@
 		\begin{equation}\nonumber
          \vec{x}=R*\vec{x_b}
 		\end{equation}
-		
+
 		<p>La anterior matriz permite encontrar cual es la coordenada de un punto fijo en el marco rotado con referencia al marco inercial terrestre [1].</p>
 
 		<p>Debido a que R es una matriz ortogonal su inversa es igual a su transpuesta y por ende la matriz que permite encontrar la coordenada de un punto en el marco inercial con referencia a un punto en el marco del cuerpo queda expresada de la siguiente manera [1]:<p>
@@ -89,7 +89,7 @@
 			\begin{bmatrix}
 				C\psi S\theta                     & S\psi C\theta                     & -S\theta \\
 				C\psi S\theta S\phi - S\psi C\phi & S\psi S\theta S\phi + C\psi C\phi & C\theta S\phi \\
-				C\psi S\theta C\phi + S\psi S\phi & S\psi S\theta C\phi - C\psi S\phi & C\theta C\phi \\ 
+				C\psi S\theta C\phi + S\psi S\phi & S\psi S\theta C\phi - C\psi S\phi & C\theta C\phi \\
 			\end{bmatrix}
          *\vec{x}
 		\end{equation}
@@ -102,7 +102,7 @@
 
 <p>La fuerza de empuje \(T\) producto de las fuerzas combinadas de los motores y las hélices siempre están ubicados en el eje z del aeromodelo [2].</p>
 
-		<img src="../images/dron/empuje.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[2]
+		<img src="images/dron/empuje.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[2]
 
 		  \begin{equation}
 			T = \sum_{i=1}^{4}fi=b\sum_{i=1}^{4}(\Omega_i)^2 \quad , \quad
@@ -113,18 +113,18 @@
 <p>El torque \(\tau_B\) producto de la fuerza de empuje se encuentra compuesto por los torques \(\tau_\phi \ \tau_\theta \ \tau_\psi\) en la dirección de sus respectivos ángulos con relación al cuerpo del cuadrimotor [2].</p>
 
   \begin{equation}\nonumber
-    \tau_B = 
+    \tau_B =
     \begin{bmatrix}
       lb[-(\Omega_2)^2+(\Omega_4)^2] \\
       lb[-(\Omega_1)^2+(\Omega_3)^2] \\
-      d[-(\Omega_1)^2+(\Omega_2)^2-(\Omega_3)^2+(\Omega_4)^2] \\ 
+      d[-(\Omega_1)^2+(\Omega_2)^2-(\Omega_3)^2+(\Omega_4)^2] \\
     \end{bmatrix}
     = \begin{bmatrix} \tau_\phi \\ \tau_\theta \\ \tau_\psi \end{bmatrix}
   \end{equation}
-  
+
 <p>El efecto de estos torques se vera manifestado en los movimientos de alabeo cabeceo (pitch \(\theta\)), alabeo (roll \(\phi\))  y guiñada (yaw \(\psi\)) [2].</p>
 
-		<img src="../images/dron/efecto-torque.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[3]
+		<img src="images/dron/efecto-torque.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[3]
 
         <h2>Ecuaciones del sistema</h2>
 
@@ -151,8 +151,8 @@
         <!--+++++++++++++++++++++++++++++++++++++++++++++++
             +++++++++++++++++++++++++++++++++++++++++++++++-->
 
-		<img src="../images/dron/Controlador.png" alt="Controlador" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-		<img src="../images/dron/Entradas-y-salidas.png" alt="Entradas y salidas del controlador" style="margin:auto;display: block" align="middle">
+		<img src="images/dron/Controlador.png" alt="Controlador" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+		<img src="images/dron/Entradas-y-salidas.png" alt="Entradas y salidas del controlador" style="margin:auto;display: block" align="middle">
 
 		<p>Descripcion de los elementos a utilizar</p><br>
         <a href="nrf24l01.html">nrf24l01</a><br>

@@ -1,12 +1,12 @@
 <!doctype html>
 <!--
-███╗   ██╗ ██████╗ ███████╗███╗   ███╗██╗   ██╗███╗   ██╗██╗  ██╗███╗   ███╗██████╗     
-████╗  ██║██╔═████╗╚════██║████╗ ████║╚██╗ ██╔╝████╗  ██║██║  ██║████╗ ████║╚════██╗    
-██╔██╗ ██║██║██╔██║    ██╔╝██╔████╔██║ ╚████╔╝ ██╔██╗ ██║███████║██╔████╔██║ █████╔╝    
-██║╚██╗██║████╔╝██║   ██╔╝ ██║╚██╔╝██║  ╚██╔╝  ██║╚██╗██║╚════██║██║╚██╔╝██║ ╚═══██╗    
-██║ ╚████║╚██████╔╝   ██║  ██║ ╚═╝ ██║   ██║   ██║ ╚████║     ██║██║ ╚═╝ ██║██████╔╝    
-╚═╝  ╚═══╝ ╚═════╝    ╚═╝  ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═══╝     ╚═╝╚═╝     ╚═╝╚═════╝   
--->   
+███╗   ██╗ ██████╗ ███████╗███╗   ███╗██╗   ██╗███╗   ██╗██╗  ██╗███╗   ███╗██████╗
+████╗  ██║██╔═████╗╚════██║████╗ ████║╚██╗ ██╔╝████╗  ██║██║  ██║████╗ ████║╚════██╗
+██╔██╗ ██║██║██╔██║    ██╔╝██╔████╔██║ ╚████╔╝ ██╔██╗ ██║███████║██╔████╔██║ █████╔╝
+██║╚██╗██║████╔╝██║   ██╔╝ ██║╚██╔╝██║  ╚██╔╝  ██║╚██╗██║╚════██║██║╚██╔╝██║ ╚═══██╗
+██║ ╚████║╚██████╔╝   ██║  ██║ ╚═╝ ██║   ██║   ██║ ╚████║     ██║██║ ╚═╝ ██║██████╔╝
+╚═╝  ╚═══╝ ╚═════╝    ╚═╝  ╚═╝     ╚═╝   ╚═╝   ╚═╝  ╚═══╝     ╚═╝╚═╝     ╚═╝╚═════╝
+-->
 <html>
 
   <head>
@@ -16,14 +16,14 @@
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    
+
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
     <title>modulos-i2c</title>
   </head>
 
   <body>
-   <!--/////////////////////////////////////////////////////////--> 
+   <!--/////////////////////////////////////////////////////////-->
 	<header>
       <div class="container">
         <h1>Modulos I2C</h1>
@@ -37,7 +37,8 @@
 	<!--/////////////////////////////////////////////////////////-->
     <div class="container">
       <section id="main_content">
-        <a href="index.html">volver</a>
+        <a href="index.html">inicio</a>
+        <a href="funcionamiento-dron.html">volver</a>
       </section>
     </div>
 	<!--/////////////////////////////////////////////////////////-->
@@ -85,15 +86,15 @@ void I2CreadBytes(uint8_t address, uint8_t subaddress, int *dest, uint8_t count)
 {
 	i2c_putrwaddr (I2C_WRITE, address);
 	i2c_putdata(subaddress);
-	i2c_init(); 
+	i2c_init();
 	nsleep(20);
 	i2c0->ucr = 0x00;
 	  //Pausa para que el esclavo procese la orden
 	while((i2c0->ucr & I2C_BUSY));
-	msleep(1);                
+	msleep(1);
 	  //Lectura de la informacion otorgada por el esclavo
 	i2c_putrwaddr(I2C_READ, address);
-	i2c_init();  
+	i2c_init();
 	//-------------------------------------
   uint8_t i;
 	for (i=0; i<count;)
@@ -113,7 +114,7 @@ void I2CreadBytes(uint8_t address, uint8_t subaddress, int *dest, uint8_t count)
 
 <!--codigo-->
 		  <pre class='brush: cpp'>
-static int temp[6]; 
+static int temp[6];
 
 I2CreadBytes(0x30, 0x35, temp, 6);
 
@@ -146,7 +147,7 @@ void I2CwriteByte(uint8_t address, uint8_t subaddress, uint8_t data);
 		  </pre>
 <!--codigo-->
 
-		<img src="../images/modulos-i2c/i2c.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+		<img src="images/modulos-i2c/i2c.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
 
 Link interesante
 Guia de como interactuar con el modulo
@@ -158,6 +159,6 @@ Que es el sobremuestreo
 https://en.wikipedia.org/wiki/Oversampling
     <!--fin articulo-->
 	</div>
-  
+
 </body>
 </html>
