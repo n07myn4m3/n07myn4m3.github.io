@@ -45,11 +45,18 @@
 	<div class="container">
 		<article class="markdown-body">
         <p>El módulo everloop, es construído para regular los colores a partir de la escala RGBW (red, green, blue y white) a través de la intensidad de luminosidad en los leds de cada uno de los 4 colores. En la figura que sigue, está ilustrada el diagrama general de funcionamento del everloop.</p>
-         <img src="images/everloop/everloop_esquema.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-         <img src="images/everloop/diagrama-estados-1.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-         <img src="images/everloop/diagrama-estados-2.png" alt="diagrama-estados-2" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-		</article>
+        <p><p>Un valor numerico que representa un color, es mandado para el wishbone, "wb_everloop", luego el controlador everloop consulta a la memória dual port, para poder convertir el dato en señales para enviarlas a los leds y así construir el color deseado.</p>
+         <img src="images/everloop/everloop_esquema.png" alt="diagrama-estados-1" style="width:100%;height:100%;margin:auto;display: block;" align="middle">
+         <p>El diagrama de estados a seguir, describe la lógica binária del sistema.</p>
+         <img src="images/everloop/diagrama-estados-1.png" alt="diagrama-estados-1" style="width:60%;height:60%;margin:auto;display: block;" align="middle">
+         <p>Y el último diagrama, ilustra los tiempos que la señal debe mantenerse en un estado específico. </p>
+         <img src="images/everloop/diagrama-estados-2.png" alt="diagrama-estados-2" style="width:60%;height:60%;margin:auto;display: block;" align="middle">
+         <p>El "wait one" representa el tiempo que se debe mantener el led encendido,  "wait zero" representa el tiempo que se debe mantener el led apagado, el primero diagrama de flujo, recibe un conjunto de "acciones" es decir un valor 8 bits, y luego utiliza el segundo diagrama mandandole realizar las acciones (mantener un tiempo apagado o encendido) bit por bit.</p>
+        </article>
 	</div>
 
+    <div class="hinca">
+        <p>La información utilizada en esta sección fueron encontradas en la documentación del fabricante <a href="https://eewiki.net/pages/viewpage.action?pageId=20939345">Scott Larson</a></p>
+    </div>
 </body>
 </html>
