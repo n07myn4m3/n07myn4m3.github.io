@@ -45,6 +45,7 @@
  	<div class="container">
 		<article class="markdown-body">
             <h1>Antenas de radio frecuencia <a href="http://www.nordicsemi.com/eng/Products/2.4GHz-RF/nRF24L01">nFR24L01</a></h1>
+            <p>Para realizar la transferencia de datos entre el dron y el control, utilizamos las antenas de Radio Frecuencia <a href="http://www.nordicsemi.com/eng/Products/2.4GHz-RF/nRF24L01">nFR24L01</a> debido a que esta, puede alcanzar una mayor distáncia y además transmitir (enviar y recibir) información a una mayor velicidad, es decir, la comunicación se vuelve más eficiente.</p>
 
             <h2>Características</h2>
             <h5 >Ultra low power consumption</h5>
@@ -159,12 +160,14 @@
             <p>Los principales estados (modo recomendado), son "Power Down Mode","Standby Modes","RX mode"y"TX mode" </p>
             <h2>Diagramas de flujo</h2>
             <h5>Transmisión (PTX operation)</h5>
-            <img src="images/nrf24l01/TX.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
+            <p>Este diagrama muestra como es el flujo de información, para realizar la tranferencia de datos, que son enviados a otro módulo RF (a otra dirección)</p>
+            <img src="images/nrf24l01/TX.png" alt="test" style="borde:solid;width:70%;height:70%;margin:auto;display: block;" align="middle"></br>
 
             <h5>Recepción (PRX operation)</h5>
-            <img src="images/nrf24l01/RX.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
-            <p>Para la transmisión y recepción hay 7 "canales", es decir, identificadas por direcciones diferentes, la dirección 0, es recomendada utilizarse como la dirección de escritura, de esta forma, es posible enviar información a 6 módulos distinto, sin que la información entre en conflicto.</p>
-
+            <p>Este diagrama muestra el proceso de lectura de datos recibidos por otro módulo RF</p>
+            <img src="images/nrf24l01/RX.png" alt="test" style="borde:solid;width:70%;height:70%;margin:auto;display: block;" align="middle"></br>
+            <p>Para la transmisión y recepción hay 7 "canales", es decir, identificadas por direcciones diferentes, la dirección 0, es recomendada utilizarse unicamente como la dirección para recibir información, de esta forma, es posible enviar datos a 6 módulos distinto, sin que la información entre en conflicto.</p>
+            <img src="images/nrf24l01/code_id.png" alt="test" style="borde:solid;width:70%;height:70%;margin:auto;display: block;" align="middle"></br>
 
             <p>Para enviar información a través de las antenas, es necesário, utilizar el protocolo SPI, para escribir, se necesita activar, poniendo el CSN en el estado bajo<. El diagrama abajo, muestra la operación de escritura</p>
             <img src="images/nrf24l01/write.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
