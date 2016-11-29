@@ -44,72 +44,133 @@
 	<!--/////////////////////////////////////////////////////////-->
  	<div class="container">
 		<article class="markdown-body">
+            <h1>Antenas de radio frecuencia <a href="http://www.nordicsemi.com/eng/Products/2.4GHz-RF/nRF24L01">nFR24L01</a></h1>
 
-			<img src="images/nrf24l01/Diagrama_bloques.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+            <h2>Características</h2>
+            <h5 >Ultra low power consumption</h5>
+            <ul>
+                <li>900nA deep sleep mode</li>
+                <li>11.3mA Radio TX at 0dBm</li>
+                <li>12.3mA Radio RX at 2Mbps on-air data-rate</li>
+            </ul>
+            <h5 >2.4GHz Radio</h5>
+            <ul>
+                <li>2.4GHz ISM band operation</li>
+                <li>GFSK modulation, 1 or 2MHz bandwidth</li>
+                <li>0, -6, -12, and -18dBm programmable TX output power</li>
+                <li>Configurable on-air data rate of 1Mbps or 2Mbps</li>
+                <li>-82dBm RX sensitivity at 2Mbps</li>
+                <li>-85dBm RX sensitivity at 1Mbps</li>
+                <li>Compatible with a 16MHz ±60ppm crystal</li>
+            </ul>
+            <h5 >Enhanced ShockBurst™ hardware protocol accelerator</h5>
+            <ul>
+                <li>Automatic packet assembly (Preamble, Address, CRC)</li>
+                <li>Automatic packed detection and validation</li>
+                <li>Dynamic payload length, 1 to 32Bytes</li>
+                <li>Auto retransmit</li>
+                <li>Auto Acknowledgment with optional payload</li>
+                <li>6 data pipe MultiCeiver™</li>
+                <li>3 separate 32Byte TX and RX FIFOs</li>
+            </ul>
+            <h5 >MCU Interface</h5>
+            <ul>
+                <li>SPI, up to 10Mbps</li>
+            </ul>
+            <h5 >Power supply</h5>
+            <ul>
+                <li>Internal linear voltage regulator</li>
+                <li>1.9 to 3.6V supply range</li>
+            </ul>
+            <h5 > Package options</h5>
+            <ul>
+                <li>20-pin 4 x 4mm QFN </li>
+            </ul>
 
+            <p>En la tabla seguiente, se presentan las entradas y salidas del módulo.</p>
+            <table>
+                <tbody>
+
+                    <!--Entradas y salidas digitales-->
+                    <tr>
+                    <td colspan="3">Entradas y salidas digitales</td>
+                    </tr>
+
+                    <tr>
+                    <td>CE</td>
+                    <td>Entrada</td>
+                    <td>Chip enable permite activar el modo de lectura o escritura</td>
+                    </tr>
+
+                    <tr>
+                    <td>CSN</td>
+                    <td>Entrada</td>
+                    <td>SPI chip select</td>
+                    </tr>
+
+                    <tr>
+                    <td>SCK</td>
+                    <td>Entrada</td>
+                    <td>SPI clock</td>
+                    </tr>
+
+                    <tr>
+                    <td>MOSI</td>
+                    <td>Entrada</td>
+                    <td>Entrada de datos SPI del modulo</td>
+                    </tr>
+
+                    <tr>
+                    <td>MISO</td>
+                    <td>Salida</td>
+                    <td>Salia de datos SPI del modulo</td>
+                    </tr>
+
+                    <tr>
+                    <td>IRQ</td>
+                    <td>Salida</td>
+                    <td>Pin de interrupcion que puede ser denegado por el microprocesador este se activa como una señal baja</td>
+                    </tr>
+
+                    <!--Pines de alimentación-->
+                    <tr>
+                    <td colspan="3">Pines de alimentacion</td>
+                    </tr>
+
+                    <tr>
+                    <td>VCC</td>
+                    <td colspan="2">Descripcion</td>
+                    </tr>
+
+                    <tr>
+                    <td>GND</td>
+                    <td colspan="2">Descripcion</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+            <h2>Diagrama de bloques</h2>
+            <p>El diagrama de bloques muestra la arquitectura general del sistema de las antenas RF.</p>
+			<img src="images/nrf24l01/Diagrama_bloques.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle"></br>
+            <h2>Diagrama de estados</h2>
+            <p>Para entender mejor, como trabajar con las antenas, el fabricante nos mostra el diagrama de funcionamento (diagrama de estados)</p>
+            <img src="images/nrf24l01/state_diagram.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
+            <p>Los principales estados (modo recomendado), son "Power Down Mode","Standby Modes","RX mode"y"TX mode" </p>
+            <h2>Diagramas de flujo</h2>
+            <h5>Transmisión (PTX operation)</h5>
+            <img src="images/nrf24l01/TX.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
+
+            <h5>Recepción (PRX operation)</h5>
+            <img src="images/nrf24l01/RX.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
+            <p>Para la transmisión y recepción hay 7 "canales", es decir, identificadas por direcciones diferentes, la dirección 0, es recomendada utilizarse como la dirección de escritura, de esta forma, es posible enviar información a 6 módulos distinto, sin que la información entre en conflicto.</p>
+
+
+            <p>Para enviar información a través de las antenas, es necesário, utilizar el protocolo SPI, para escribir, se necesita activar, poniendo el CSN en el estado bajo<. El diagrama abajo, muestra la operación de escritura</p>
+            <img src="images/nrf24l01/write.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
+            <p>Para escribir tambien se necesita activar el CSN en el estado bajo<. El diagrama abajo, muestra la operación de lectura</p>
+            <img src="images/nrf24l01/read.png" alt="test" style="borde:solid;width:100%;height:100%;margin:auto;display: block;" align="middle"></br>
 			<!--Descripcion del modulo-->
-			 <h1>Diagrama de bloques</h1>
-				<table>
-					<tbody>
-
-						<!--Entradas y salidas digitales-->
-						<tr>
-						<td colspan="3">Entradas y salidas digitales</td>
-						</tr>
-
-						<tr>
-						<td>CE</td>
-						<td>Entrada</td>
-						<td>Chip enable permite activar el modo de lectura o escritura</td>
-						</tr>
-
-						<tr>
-						<td>CSN</td>
-						<td>Entrada</td>
-						<td>SPI chip select</td>
-						</tr>
-
-						<tr>
-						<td>SCK</td>
-						<td>Entrada</td>
-						<td>SPI clock</td>
-						</tr>
-
-						<tr>
-						<td>MOSI</td>
-						<td>Entrada</td>
-						<td>Entrada de datos SPI del modulo</td>
-						</tr>
-
-						<tr>
-						<td>MISO</td>
-						<td>Salida</td>
-						<td>Salia de datos SPI del modulo</td>
-						</tr>
-
-						<tr>
-						<td>IRQ</td>
-						<td>Salida</td>
-						<td>Pin de interrupcion que puede ser denegado por el microprocesador este se activa como una señal baja</td>
-						</tr>
-
-						<!--Pines de alimentación-->
-						<tr>
-						<td colspan="3">Pines de alimentacion</td>
-						</tr>
-
-						<tr>
-						<td>VCC</td>
-						<td colspan="2">Descripcion</td>
-						</tr>
-
-						<tr>
-						<td>GND</td>
-						<td colspan="2">Descripcion</td>
-						</tr>
-
-					</tbody>
-				</table>
 				<!--Esto es un comentario-->
       </article>
 	</div>
