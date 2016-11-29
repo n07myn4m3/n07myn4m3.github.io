@@ -44,11 +44,41 @@
 	<!--/////////////////////////////////////////////////////////-->
 	<div class="container">
 		<article class="markdown-body">
+        <h1>Control Remoto RF</h1>
+         <p>Un control remoto para un dron, convirte el comando mecánico de direcciones a una señal interpretada por el mecanismo del dron.</p>
+         <p>Para construir, el control, es necesário convertir un movimento en una señal, para eso, se puede utilizar unos joystick, hecho a partir de dos potenciómetros y un botón.</p>
+         <img src="images/control/joys.png" alt="test" style="width:30%;height:30%;margin:auto;display: block;" align="middle"><br/>
+         <p>Utiliando una entrada de 5V, saldrá un porcentaje de esa tensión, a las salidas Vx y Vy, dependiendo del movimiento hecho en el joystick. Es señal analógica es reconocida por el "ADC0832" y transformada a digital.</p>
+         <img src="images/control/ADC0832-N.png" alt="test" style="width:20%;height:20%;margin:auto;display: block;" align="middle"><br/>
+         <p>Luego esta señal digital es enviada hasta el objeto que se desea controlar, a través de una conexión inalámbrica </p>
+     	<!--foto antena julian-->
 
-         <img src="images/motor/motor.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+        <h2>Conversión Análogico a Digital</h2>
+        <p>Para convertir una señal analogica a digital, se puede utilizar uno de los chips de la línea ADC083x.</p>
+        <img src="images/control/chip.png" alt="test" style="width:50%;height:50%;margin:auto;display: block;" align="middle"><br/>
+        <ul>
+            <li>CS': Chip select invertido, el chip trabaja sí CS' está en bajo (bajo = 0V y alto = 5V)</li>
+            <li>CH0: Canal analógico 0</li>
+            <li>CH2: Canal analógico 1</li>
+            <li>GND: Ground</li>
+            <li>VCC: La entrada del chip, debe ser de 5V</li>
+            <li>CLK: El reloj del chip, debe correr a 250kHz</li>
+            <li>Do: Salida digital</li>
+            <li>Di: Entrada digital digital</li>
+        </ul>
+        <img src="images/control/data_sig.png" alt="test" style="width:100%;height:100%;margin:auto;display: block;" align="middle"><br/>
+        <p>Para leer la información de alguno de los canales canal, y transformá-la en digital, se poner el CS' en 0 y luego debe mandar a la entrada Di, el 1 por dos ciclos y al tercer ciclo mandar un 0 para leer el canal 0 o el 1 para leer el canal 1 en los flancos de subida, luego mantener la entrada en 0 hasta que complete la lectura.</p>
+        <p>La lectura de la señal,saldrá en los proximos 8 flancos de bajada.</p>
 
+        <p>Para el sistema de controles remotos, se utilizarán dos ADC0832 debido que que un control remoto, utiliza 3 direcciones, (x,y,z). Para esto, se contruye, que pueda leer cualquer de los dos chips.</p>
+        <img src="images/control/diagrama_general_adc.png" alt="test" style="width:100%;height:100%;margin:auto;display: block;" align="middle"><br/>
+        <p>Luego unificar las 3 señales pidiendo leer x, luego y, por último el z.</p>
+        <p>Se activa el write, luego pide leer x, luego lee el valor de x, despues, activa el write y se repite para y e z.</p>
+        <img src="images/control/adc_sim.png" alt="test" style="width:100%;height:100%;margin:auto;display: block;" align="middle"><br/>
 
-		</article>
+        <h2>Comunicación a través de las antenas RF</h2>
+
+        </article>
 	</div>
 
 </body>
