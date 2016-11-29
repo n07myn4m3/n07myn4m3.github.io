@@ -45,7 +45,6 @@
 	<div class="container">
 		<article class="markdown-body">
 		<p>Para regular el ciclo de trabajo de una señal, es decir, regular la proporción de la parte que queda en alto de la señal con relación a todo el período, se utiliza una modulación por ancho de pulsos "pulse width modulation" PWM. En el caso de señales digitales, se regula la pate alta representada por el 1 lógico con relación al periodo completo que es la parte alta más la baja.</p>
-         <img src="images/pwm/pwm_simulacion.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
          <table border="1">
              <caption>Tabla 1: Perifericos.</caption>
              <tr><th>Port</th><th>Función</th></tr>
@@ -56,8 +55,20 @@
              <tr><td>pwm_out</td><td>Salida PWM. El PWM modula alrededor del centro del pulso con fases espaciadas de forma uniforme</td></tr>
              <tr><td>pwm_n_out</td><td>Salida PWM invertida</td></tr>
          </table>
-         <img src="images/pwm/cicle.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-
+         <p>El algorítmo utilizado para la modulación de pulso fué basado el la documentación citada en el hincapié, debido a que con este algoritmo es posible utilizar varias fases distintas.</p>
+         <p>El centro de cada pulso se preoduce en la frecuencia PWM y el ancho del pulso varía alrededor del centro. La figura abajo que sigue, ilustra el concepto utilizado.</p>
+         <img src="images/pwm/cicle.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle"><br/>
+         <p>Un ejemplo, si se generan 3 fases, las tres salidas PWM estaran desfazadas en 120 grados entre sí.</p>
+         <table border="1">
+             <caption>Tabla 1: Parámetros configurables con el <a href="https://eewiki.net/pages/viewpage.action?pageId=20939345">algoritmo de Scott Larson.</caption>
+             <tr><th>valor configurable</th><th>Función</th></tr>
+             <tr><td>sys_clk</td><td>Frecuencia del reloj</td></tr>
+             <tr><td>pwm_freq</td><td>Frecuencia pwm</td></tr>
+             <tr><td>resolución de bits</td><td>Numero de bits de resolución</td></tr>
+             <tr><td>fases</td><td>Numero PWMs y fases</td></tr>
+         </table>
+         <p>Como se puede ver en la simulación, dependiendo del valor de duty, el ancho del alto, en la señal de salida del PWM, cambia. Cuando el valor de duty es mayor, la salida del PWM presenta mayor ancho en alto, con relación al ciclo del reloj.</p>
+         <img src="images/pwm/pwm_simulacion.png" alt="diagrama-estados-1" style="width:100%;height:100%;margin:auto;display: block;" align="middle">
         </article>
 	</div>
     <div class="hinca">
