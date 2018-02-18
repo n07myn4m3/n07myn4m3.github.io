@@ -13,9 +13,9 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
 
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -31,22 +31,25 @@
    <!--/////////////////////////////////////////////////////////-->
 	<header>
       <div class="container">
-        <h1>Funcionamiento de un dron</h1>
-        <h2></h2>
 
-        <section id="downloads">
-          <a href="https://github.com/n07myn4m3" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
-        </section>
+		<h1>Funcionamiento de un dron</h1>
+		<h2></h2>
+
+		<section id="downloads">
+		<a href="https://github.com/n07myn4m3" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+		</section>
+
       </div>
+
 	</header>
-	<!--/////////////////////////////////////////////////////////-->
-    <div class="container">
-      <section id="main_content">
-        <a href="index.html">volver</a>
-      </section>
-    </div>
-	<!--/////////////////////////////////////////////////////////-->
+
+
 	<div class="container">
+
+
+		<a href="../index.html">volver</a>
+
+
     <!--Inicio articulo-->
         <h1>Descripcion de un Dron</h1>
 
@@ -54,7 +57,7 @@
 
 		<p>Mas específicamente un dron posee cuatro rotores capaces de producir una fuerza de empuje a una distancia determinada con relación al centro de gravedad del dron, donde a partir de la variación de la velocidad de los rotores es posible cambiar la magnitud de dichas fuerzas de sustentación, lo que le da a este la oportunidad de mantener un estado estacionario como si flotase en el aire o de mantener una determinada dirección de vuelo</p>
 
-		<img src="images/dron/yaw-pitch-roll.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+		<img src="../images/dron/yaw-pitch-roll.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
 
         <!--+++++++++++++++++++++++++++++++++++++++++++++++
             +++++++++++++++++++++++++++++++++++++++++++++++-->
@@ -102,7 +105,7 @@
 
 <p>La fuerza de empuje \(T\) producto de las fuerzas combinadas de los motores y las hélices siempre están ubicados en el eje z del aeromodelo [2].</p>
 
-		<img src="images/dron/empuje.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[2]
+		<img src="../images/dron/empuje.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[2]
 
 		  \begin{equation}
 			T = \sum_{i=1}^{4}fi=b\sum_{i=1}^{4}(\Omega_i)^2 \quad , \quad
@@ -124,7 +127,7 @@
 
 <p>El efecto de estos torques se vera manifestado en los movimientos de alabeo cabeceo (pitch \(\theta\)), alabeo (roll \(\phi\))  y guiñada (yaw \(\psi\)) [2].</p>
 
-		<img src="images/dron/efecto-torque.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[3]
+		<img src="../images/dron/efecto-torque.png" alt="test" style="width:80%;height:80%;margin:auto;display: block;" align="middle">[3]
 
         <h2>Ecuaciones del sistema</h2>
 
@@ -151,8 +154,8 @@
         <!--+++++++++++++++++++++++++++++++++++++++++++++++
             +++++++++++++++++++++++++++++++++++++++++++++++-->
 
-		<img src="images/dron/Controlador.png" alt="Controlador" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
-		<img src="images/dron/Entradas-y-salidas.png" alt="Entradas y salidas del controlador" style="margin:auto;display: block" align="middle">
+		<img src="../images/dron/Controlador.png" alt="Controlador" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+		<img src="../images/dron/Entradas-y-salidas.png" alt="Entradas y salidas del controlador" style="margin:auto;display: block" align="middle">
 
 		<p>Descripcion de los elementos a utilizar</p><br>
         <a href="nrf24l01.html">nrf24l01</a><br>
@@ -169,7 +172,7 @@
         <!--+++++++++++++++++++++++++++++++++++++++++++++++
             +++++++++++++++++++++++++++++++++++++++++++++++-->
 
-      <img src="images/general_diagram.jpg" alt="diagrama_general" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
+      <img src="../images/general_diagram.jpg" alt="diagrama_general" style="width:80%;height:80%;margin:auto;display: block;" align="middle">
 
       <h2>Bibliografía</h2>
 

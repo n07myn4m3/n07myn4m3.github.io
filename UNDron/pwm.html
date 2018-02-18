@@ -13,9 +13,9 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="../stylesheets/print.css" media="print">
 
     <script src='https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
 
@@ -37,7 +37,7 @@
 	<!--/////////////////////////////////////////////////////////-->
     <div class="container">
       <section id="main_content">
-        <a href="index.html">inicio</a>
+        <a href="../index.html">inicio</a>
         <a href="funcionamiento-dron.html">volver</a>
       </section>
     </div>
@@ -57,7 +57,7 @@
          </table>
          <p>El algorítmo utilizado para la modulación de pulso fué basado el la documentación citada en el hincapié, debido a que con este algoritmo es posible utilizar varias fases distintas.</p>
          <p>El centro de cada pulso se preoduce en la frecuencia PWM y el ancho del pulso varía alrededor del centro. La figura abajo que sigue, ilustra el concepto utilizado.</p>
-         <img src="images/pwm/cicle.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle"><br/>
+         <img src="../images/pwm/cicle.png" alt="diagrama-estados-1" style="width:80%;height:80%;margin:auto;display: block;" align="middle"><br/>
          <p>Un ejemplo, si se generan 3 fases, las tres salidas PWM estaran desfazadas en 120 grados entre sí.</p>
          <table border="1">
              <caption>Tabla 1: Parámetros configurables con el <a href="https://eewiki.net/pages/viewpage.action?pageId=20939345">algoritmo de Scott Larson.</caption>
@@ -68,7 +68,7 @@
              <tr><td>fases</td><td>Numero PWMs y fases</td></tr>
          </table>
          <p>Como se puede ver en la simulación, dependiendo del valor de duty, el ancho del alto, en la señal de salida del PWM, cambia. Cuando el valor de duty es mayor, la salida del PWM presenta mayor ancho en alto, con relación al ciclo del reloj.</p>
-         <img src="images/pwm/pwm_simulacion.png" alt="diagrama-estados-1" style="width:100%;height:100%;margin:auto;display: block;" align="middle"><br/>
+         <img src="../images/pwm/pwm_simulacion.png" alt="diagrama-estados-1" style="width:100%;height:100%;margin:auto;display: block;" align="middle"><br/>
         </article>
 	</div>
     <div class="hinca">
